@@ -1,0 +1,284 @@
+/* ===== FOOTER STYLES ===== */
+
+footer {
+  background: #1e293b;
+  color: #cbd5e1;
+  margin-top: auto;
+  width: 100%;
+}
+
+footer .max-w-7xl {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Footer Grid */
+footer .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+/* Brand Section */
+footer .flex.items-center {
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+footer h3,
+footer h4 {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+footer h3 {
+  font-size: 1.25rem;
+}
+
+footer h4 {
+  font-size: 1rem;
+}
+
+footer p {
+  text-align: center;
+  line-height: 1.6;
+  color: #94a3b8;
+}
+
+/* Links */
+footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+footer ul li {
+  margin-bottom: 0.75rem;
+}
+
+footer ul li a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+footer ul li a:hover {
+  color: #60a5fa;
+}
+
+/* Contact Info */
+footer .flex.items-start {
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+footer svg {
+  flex-shrink: 0;
+  color: #60a5fa;
+}
+
+/* Divider */
+footer .border-t {
+  border-top: 1px solid #334155;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+footer .flex.flex-col,
+footer .flex.flex-col.md\:flex-row {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+footer .text-gray-400 {
+  color: #94a3b8;
+}
+
+footer .text-gray-600 {
+  color: #64748b;
+}
+
+footer .hover\:text-blue-400:hover {
+  color: #60a5fa;
+}
+
+/* Links Footer Bottom */
+footer .flex.gap-6 {
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+footer .flex.gap-6 span {
+  color: #64748b;
+  margin: 0 0.25rem;
+}
+
+/* Status */
+footer .mt-4 {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+footer .text-center span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+footer .bg-green-500 {
+  background-color: #10b981;
+}
+
+footer .rounded-full {
+  border-radius: 9999px;
+}
+
+footer .w-2 {
+  width: 0.5rem;
+}
+
+footer .h-2 {
+  height: 0.5rem;
+}
+
+footer .mr-2 {
+  margin-right: 0.5rem;
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  footer .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  footer .grid > div {
+    text-align: center;
+  }
+
+  footer .max-w-7xl {
+    padding: 2rem 1rem;
+  }
+
+  footer .flex.items-center {
+    justify-content: center;
+  }
+
+  footer h3,
+  footer h4,
+  footer p,
+  footer ul {
+    text-align: center;
+  }
+
+  footer .flex.flex-col.md\:flex-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  footer .flex.gap-6 {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  footer .flex.gap-6 span {
+    display: none;
+  }
+
+  footer .flex.items-start {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 768px) {
+  footer .grid {
+    text-align: left;
+  }
+
+  footer .grid > div:first-child,
+  footer .grid > div:nth-child(2),
+  footer .grid > div:nth-child(3),
+  footer .grid > div:nth-child(4) {
+    text-align: left;
+  }
+
+  footer .flex.items-center {
+    justify-content: flex-start;
+  }
+
+  footer h3,
+  footer h4 {
+    text-align: left;
+  }
+
+  footer .grid > div p {
+    text-align: left;
+  }
+
+  footer .grid > div ul {
+    text-align: left;
+  }
+
+  footer .flex.items-start {
+    justify-content: flex-start;
+  }
+}
+
+/* Always center footer bottom */
+footer .border-t > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+footer .border-t .flex.flex-col {
+  align-items: center;
+  justify-content: center;
+}
+
+footer .border-t .flex.flex-col.md\:flex-row {
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  footer .border-t .flex.flex-col.md\:flex-row {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+/* Status sempre centralizado */
+footer .mt-4 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

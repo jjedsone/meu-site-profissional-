@@ -1,0 +1,225 @@
+/* ===== PHONE MOCKUP STYLES ===== */
+
+.phone-mockup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.phone-mockup {
+  position: relative;
+  width: 280px;
+  height: 580px;
+  background: linear-gradient(145deg, #2c3e50 0%, #1a252f 100%);
+  border-radius: 35px;
+  padding: 12px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    0 0 0 4px rgba(255, 255, 255, 0.1),
+    inset 0 0 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.phone-mockup:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.4),
+    0 0 0 4px rgba(255, 255, 255, 0.15),
+    inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Notch (iOS style) */
+.phone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 28px;
+  background: #1a252f;
+  border-radius: 0 0 18px 18px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+.phone-speaker {
+  width: 60px;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+}
+
+.phone-camera {
+  width: 12px;
+  height: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Screen */
+.phone-screen {
+  width: 100%;
+  height: calc(100% - 24px);
+  background: #000;
+  border-radius: 25px;
+  overflow: hidden; /* Ocultar overflow para manter o design do celular */
+  margin-top: 16px;
+  position: relative;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  /* Garantir que o conteúdo seja clicável */
+  pointer-events: none;
+}
+
+.phone-screen > * {
+  pointer-events: auto;
+}
+
+.phone-iframe {
+  width: 390px; /* Largura padrão de um celular mobile */
+  height: 844px; /* Altura padrão de um celular mobile */
+  border: none;
+  /* Ajustar para preencher completamente a tela do mockup */
+  /* Mockup: 280px width total, padding 12px cada lado = 256px largura tela interna */
+  /* Scale calculado: 256 / 390 = 0.656 */
+  transform: scale(0.656);
+  transform-origin: top left;
+  pointer-events: auto; /* PERMITIR INTERAÇÃO COMPLETA */
+  /* Permitir scroll vertical e horizontal dentro do iframe */
+  touch-action: pan-x pan-y pinch-zoom;
+  /* Melhorar a renderização em dispositivos móveis */
+  -webkit-overflow-scrolling: touch;
+  /* Garantir que o conteúdo seja renderizado corretamente */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.phone-screenshot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.phone-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.placeholder-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.placeholder-text {
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+/* Home Button (iOS) */
+.phone-home-button {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Info */
+.phone-mockup-info {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.phone-mockup-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.phone-mockup-category {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  color: #2563eb;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Android Style Variant */
+.phone-mockup.android {
+  border-radius: 30px;
+}
+
+.phone-mockup.android .phone-notch {
+  border-radius: 0 0 15px 15px;
+}
+
+.phone-mockup.android .phone-home-button {
+  width: 60px;
+  height: 6px;
+  border-radius: 3px;
+  border: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .phone-mockup {
+    width: 240px;
+    height: 500px;
+  }
+  
+  .phone-iframe {
+    /* Para mockup de 240px: tela interna ~220px (240-24) / 390 = 0.564 */
+    transform: scale(0.564);
+  }
+}
+
+@media (max-width: 480px) {
+  .phone-mockup {
+    width: 200px;
+    height: 420px;
+  }
+  
+  .phone-iframe {
+    /* Para mockup de 200px: tela interna ~180px (200-24) / 390 = 0.462 */
+    transform: scale(0.462);
+  }
+}
+
+/* Animation */
+@keyframes phoneFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.phone-mockup.animated {
+  animation: phoneFloat 3s ease-in-out infinite;
+}

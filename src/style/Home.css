@@ -1,0 +1,454 @@
+/* ===== HOME PAGE STYLES ===== */
+
+/* Hero Section */
+.hero-section {
+  background: var(--site-body-bg, linear-gradient(135deg, #4e7ba8 0%, #3f557a 50%, #2a63af 100%));
+  color: var(--site-body-text, #1f2937);
+  padding: 5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-blob-1,
+.hero-blob-2 {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  filter: blur(60px);
+}
+
+.hero-blob-1 {
+  top: 2.5rem;
+  right: 2.5rem;
+  width: 16rem;
+  height: 16rem;
+  background: #60a5fa;
+}
+
+.hero-blob-2 {
+  bottom: 2.5rem;
+  left: 2.5rem;
+  width: 20rem;
+  height: 20rem;
+  background: var(--site-accent, #06b6d4);
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-title {
+  font-size: 3.75rem;
+  font-weight: 800;
+  color: var(--site-body-text, #111827);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--site-body-text, #4b5563);
+  opacity: 0.9;
+  margin-bottom: 2.5rem;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.75;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--site-gradient, linear-gradient(135deg, #2563eb 0%, #06b6d4 100%));
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px var(--site-primary-shadow, rgba(37, 99, 235, 0.3));
+  border: none;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px var(--site-primary-shadow-heavy, rgba(37, 99, 235, 0.4));
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid var(--site-primary, #2563eb);
+  color: var(--site-primary, #2563eb);
+  background: transparent;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: var(--site-primary, #2563eb);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Benefits Section */
+.benefits-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.benefits-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.benefits-title h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color:  #1e2430;
+  margin-bottom: 1rem;
+}
+
+.benefits-title p {
+  font-size: 1.25rem;
+  color: var(--site-body-text, #202124);
+  opacity: 0.8;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.benefit-card {
+  background: var(--site-card-bg, white);
+  color: var(--site-card-text, #1e293b);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  border-color: var(--site-primary, #2563eb);
+}
+
+.benefit-icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1.5rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.benefit-card:hover .benefit-icon {
+  transform: scale(1.1);
+}
+
+.benefit-icon-blue {
+  background: var(--site-gradient, linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%));
+}
+
+.benefit-icon-cyan {
+  background: linear-gradient(135deg, var(--site-accent, #06b6d4) 0%, var(--site-primary, #3b82f6) 100%);
+}
+
+.benefit-icon-purple {
+  background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+}
+
+.benefit-icon-green {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.benefit-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--site-card-text, #111827);
+  margin-bottom: 0.75rem;
+}
+
+.benefit-card p {
+  color: var(--site-card-text, #6b7280);
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+/* How It Works Section */
+.how-it-works-section {
+  background: var(--site-body-bg, linear-gradient(135deg, #ffffff 0%, #e8f0fe 50%, #ffffff 100%));
+  color: var(--site-body-text, #1f2937);
+  padding: 5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.how-it-works-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--site-body-text, #111827);
+  margin-bottom: 1rem;
+}
+
+.section-title p {
+  font-size: 1.25rem;
+  color: var(--site-body-text, #6b7280);
+  opacity: 0.8;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.step-card {
+  text-align: center;
+}
+
+.step-number-wrapper {
+  position: relative;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+
+.step-number {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgb(27, 26, 26);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.step-card:hover .step-number {
+  transform: scale(1.1);
+}
+
+.step-number-blue {
+  background: var(--site-gradient, linear-gradient(135deg, #2563eb 0%, #06b6d4 100%));
+}
+
+.step-number-purple {
+  background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+}
+
+.step-number-green {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+}
+
+.step-badge {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.step-badge-yellow {
+  background: #fbbf24;
+}
+
+.step-badge-green {
+  background: #10b981;
+}
+
+.step-badge-blue {
+  background: #3b82f6;
+}
+
+.step-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--site-body-text, #111827);
+  margin-bottom: 1rem;
+}
+
+.step-card p {
+  color: var(--site-body-text, #6b7280);
+  opacity: 0.8;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.cta-section {
+  background: var(--site-gradient-horizontal, linear-gradient(90deg, #2563eb 0%, #a855f7 50%, #06b6d4 100%));
+  color: white;
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.cta-content h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.cta-content p {
+  font-size: 1.5rem;
+  margin-bottom: 2.5rem;
+  color: #dbeafe;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: white;
+  color: var(--site-primary, #2563eb);
+  padding: 1.25rem 2.5rem;
+  border-radius: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: none;
+}
+
+.btn-white:hover {
+  background: #f3f4f6;
+  transform: scale(1.05);
+}
+
+.btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid white;
+  color: rgb(12, 11, 11);
+  background: transparent;
+  padding: 1.25rem 2rem;
+  border-radius: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-white:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cta-features {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  font-size: 0.875rem;
+}
+
+.cta-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Icon Styles */
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.icon-white {
+  color: white;
+}
+
+.icon-green {
+  color: #86efac;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+
+  .section-title h2 {
+    font-size: 2rem;
+  }
+
+  .cta-content h2 {
+    font-size: 2rem;
+  }
+
+  .cta-content p {
+    font-size: 1.25rem;
+  }
+
+  .steps-grid,
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
