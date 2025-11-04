@@ -5,25 +5,33 @@ const SEOHead = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const seoData = getSEOData(location.pathname);
-    
-    // Atualizar título
-    document.title = seoData.title;
-    
-    // Atualizar ou criar meta tags
-    updateMetaTag('description', seoData.description);
-    updateMetaTag('keywords', seoData.keywords);
-    updateMetaTag('og:title', seoData.title);
-    updateMetaTag('og:description', seoData.description);
-    updateMetaTag('og:type', 'website');
-    updateMetaTag('og:url', window.location.href);
-    updateMetaTag('twitter:card', 'summary_large_image');
-    updateMetaTag('twitter:title', seoData.title);
-    updateMetaTag('twitter:description', seoData.description);
-    
-    // Atualizar lang
-    document.documentElement.lang = 'pt-BR';
-    
+    // Usar setTimeout para garantir que o DOM está pronto
+    const timer = setTimeout(() => {
+      const seoData = getSEOData(location.pathname);
+      
+      // Atualizar título
+      if (document.title !== seoData.title) {
+        document.title = seoData.title;
+      }
+      
+      // Atualizar ou criar meta tags
+      updateMetaTag('description', seoData.description);
+      updateMetaTag('keywords', seoData.keywords);
+      updateMetaTag('og:title', seoData.title);
+      updateMetaTag('og:description', seoData.description);
+      updateMetaTag('og:type', 'website');
+      updateMetaTag('og:url', window.location.href);
+      updateMetaTag('twitter:card', 'summary_large_image');
+      updateMetaTag('twitter:title', seoData.title);
+      updateMetaTag('twitter:description', seoData.description);
+      
+      // Atualizar lang
+      if (document.documentElement) {
+        document.documentElement.lang = 'pt-BR';
+      }
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [location.pathname]);
 
   const updateMetaTag = (name, content) => {
@@ -37,10 +45,16 @@ const SEOHead = () => {
     if (!element) {
       element = document.createElement('meta');
       element.setAttribute(attr, name);
-      document.head.appendChild(element);
+      // Adicionar de forma segura ao head
+      const head = document.head || document.getElementsByTagName('head')[0];
+      if (head) {
+        head.appendChild(element);
+      }
     }
     
-    element.setAttribute('content', content);
+    if (element) {
+      element.setAttribute('content', content);
+    }
   };
 
   const getSEOData = (pathname) => {

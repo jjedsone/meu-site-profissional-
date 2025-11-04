@@ -16,6 +16,7 @@ import NotFound from "./page/NotFound";
 // Admin Routes
 import AdminLogin from "./pages/admin/Login";
 import ForgotPassword from "./pages/admin/ForgotPassword";
+import AdminSetup from "./pages/admin/Setup";
 import AdminDashboard from "./pages/admin/Dashboard";
 import ProjectForm from "./pages/admin/ProjectForm";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
@@ -69,6 +70,7 @@ function App() {
           <Route path="/contato" element={<Contato />} />
           
           {/* Admin Routes */}
+          <Route path="/admin/setup" element={<AdminSetup />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/forgot-password" element={<ForgotPassword />} />
           <Route 

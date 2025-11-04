@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { Lock, Mail, LogIn, AlertCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Lock, User, LogIn, AlertCircle } from 'lucide-react';
 import { login } from '../../utils/auth';
 import { sendLoginAttemptNotification, getUserInfo, getUserIP } from '../../utils/emailNotification';
 import '../../style/Admin.css';
 
 const AdminLogin = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -23,12 +23,12 @@ const AdminLogin = () => {
       const userIP = await getUserIP();
       
       await sendLoginAttemptNotification(
-        email,
+        username || 'admin',
         userIP,
         userInfo.userAgent
       );
 
-      const result = await login(email, password);
+      const result = login(username, password);
       
       if (result.success) {
         navigate('/admin/dashboard');
@@ -66,17 +66,17 @@ const AdminLogin = () => {
 
             <div className="admin-form-group">
               <label className="admin-form-label">
-                <Mail className="admin-input-icon" />
-                Email
+                <User className="admin-input-icon" />
+                Usuário
               </label>
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 className="admin-form-input"
-                placeholder="Digite seu email"
+                placeholder="Digite seu usuário"
                 required
-                autoComplete="email"
+                autoComplete="username"
               />
             </div>
 
@@ -113,12 +113,9 @@ const AdminLogin = () => {
           </form>
 
           <div className="admin-login-footer">
-            <Link 
-              to="/admin/forgot-password" 
-              className="admin-forgot-password-link"
-            >
-              Esqueci minha senha
-            </Link>
+            <p className="admin-login-hint">
+              💡 Usuário: <strong>admin</strong> | Senha: <strong>565671Je@</strong>
+            </p>
           </div>
         </div>
       </div>

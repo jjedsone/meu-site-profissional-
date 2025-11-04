@@ -532,14 +532,60 @@
   color: #86efac;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Responsive - Tablets */
+@media (max-width: 1024px) {
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
 
   .hero-subtitle {
     font-size: 1.125rem;
+  }
+
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 3rem 1.5rem;
+    min-height: auto;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-sound-button {
+    top: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .hero-sound-button .sound-icon {
+    width: 1.25rem;
+    height: 1.25rem;
   }
 
   .section-title h2 {
@@ -557,6 +603,57 @@
   .steps-grid,
   .benefits-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .benefits-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .benefits-title h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Responsive - Mobile Pequeno */
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 2rem 1rem;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .badge-tech-primary {
+    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .benefits-section {
+    padding: 2rem 1rem;
+  }
+
+  .benefits-title h2 {
+    font-size: 1.5rem;
+  }
+
+  .cta-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .cta-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .cta-content p {
+    font-size: 1rem;
   }
 }
 

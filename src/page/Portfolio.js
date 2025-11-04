@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ExternalLink, CheckCircle, Smartphone, Globe, Eye } from 'lucide-react';
+import { ExternalLink, CheckCircle, Smartphone, Globe, Eye, ChevronDown, Filter } from 'lucide-react';
 import PhoneMockup from '../components/PhoneMockup';
 import { getProjectsByCategory, categoriasDisponiveis } from '../data/portfolioData';
 import '../style/Portfolio.css';
@@ -8,8 +8,33 @@ import '../style/Portfolio.css';
 const Portfolio = () => {
   const [filtro, setFiltro] = useState('todos');
   const [projetoSelecionado, setProjetoSelecionado] = useState(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const projetosFiltrados = getProjectsByCategory(filtro);
+
+  // Fechar dropdown ao clicar fora
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const categoriaAtual = filtro === 'todos' 
+    ? { label: 'Todas as Categorias', value: 'todos' }
+    : categoriasDisponiveis.find(cat => cat.value === filtro) || { label: 'Todas as Categorias', value: 'todos' };
+
+  const handleCategoriaSelect = (categoria) => {
+    setFiltro(categoria);
+    setIsDropdownOpen(false);
+  };
 
   return (
     <div className="portfolio-page">
@@ -26,24 +51,62 @@ const Portfolio = () => {
           </p>
         </div>
 
-        {/* Filtros */}
-        <div className="portfolio-filters">
-          <button
-            key="todos"
-            onClick={() => setFiltro('todos')}
-            className={`filter-button ${filtro === 'todos' ? 'active' : ''}`}
-          >
-            Todos
-          </button>
-          {categoriasDisponiveis.map((cat) => (
+        {/* Filtros - Dropdown */}
+        <div className="portfolio-filters-wrapper" ref={dropdownRef}>
+          <div className="portfolio-filter-dropdown">
             <button
-              key={cat.value}
-              onClick={() => setFiltro(cat.value)}
-              className={`filter-button ${filtro === cat.value ? 'active' : ''}`}
+              className="portfolio-filter-trigger"
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
-              {cat.label}
+              <Filter className="filter-icon" />
+              <span className="filter-label">Filtrar por:</span>
+              <span className="filter-selected">{categoriaAtual.label}</span>
+              <ChevronDown className={`filter-chevron ${isDropdownOpen ? 'open' : ''}`} />
             </button>
-          ))}
+
+            {isDropdownOpen && (
+              <div className="portfolio-filter-dropdown-menu">
+                <div className="filter-menu-header">
+                  <h3>Selecione uma Categoria</h3>
+                  <p>Escolha a categoria para filtrar os projetos</p>
+                </div>
+                
+                <div className="filter-menu-content">
+                  <button
+                    onClick={() => handleCategoriaSelect('todos')}
+                    className={`filter-menu-item ${filtro === 'todos' ? 'active' : ''}`}
+                  >
+                    <span className="filter-item-label">Todas as Categorias</span>
+                    {filtro === 'todos' && <CheckCircle className="filter-check-icon" />}
+                  </button>
+
+                  {categoriasDisponiveis.map((cat) => (
+                    <button
+                      key={cat.value}
+                      onClick={() => handleCategoriaSelect(cat.value)}
+                      className={`filter-menu-item ${filtro === cat.value ? 'active' : ''}`}
+                    >
+                      <span className="filter-item-label">{cat.label}</span>
+                      {filtro === cat.value && <CheckCircle className="filter-check-icon" />}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Badge mostrando categoria atual */}
+          {filtro !== 'todos' && (
+            <div className="filter-active-badge">
+              <span>Filtrando: {categoriaAtual.label}</span>
+              <button 
+                onClick={() => handleCategoriaSelect('todos')}
+                className="filter-clear-btn"
+              >
+                Limpar filtro
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Grid de Projetos com Mockups de Celular */}

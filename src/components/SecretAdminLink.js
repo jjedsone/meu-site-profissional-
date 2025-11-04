@@ -6,7 +6,7 @@ const SecretAdminLink = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/admin/login');
+    navigate('/admin/setup');
   };
 
   return (

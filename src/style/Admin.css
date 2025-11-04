@@ -191,6 +191,20 @@
   margin: 0;
 }
 
+/* Loading Animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
 .admin-login-hint {
   font-size: 0.875rem;
   color: #64748b;
