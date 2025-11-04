@@ -10,7 +10,7 @@ import {
   Image as ImageIcon,
   Palette
 } from 'lucide-react';
-import { portfolioProjects } from '../../data/portfolioData';
+import { portfolioProjects, categoriasDisponiveis } from '../../data/portfolioData';
 import '../../style/Admin.css';
 
 const ProjectForm = () => {
@@ -51,13 +51,7 @@ const ProjectForm = () => {
     }
   }, [id, isEdit]);
 
-  const categorias = [
-    { value: 'saude', label: 'Saúde' },
-    { value: 'juridico', label: 'Jurídico' },
-    { value: 'consultoria', label: 'Consultoria' },
-    { value: 'contabilidade', label: 'Contabilidade' },
-    { value: 'fitness', label: 'Fitness' }
-  ];
+  const categorias = categoriasDisponiveis;
 
   const planos = ['Básico', 'Intermediário', 'Profissional', 'Premium'];
 

@@ -70,3 +70,4 @@ firebase deploy --only hosting
 
 **🚀 Execute agora e seu site estará no ar em minutos!**
 
+

@@ -1,14 +1,50 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Code, Smartphone, Zap, Rocket } from 'lucide-react';
+import { CheckCircle, Code, Smartphone, Zap, Rocket, Volume2, VolumeX } from 'lucide-react';
 import Depoimentos from '../components/Depoimentos';
 import '../style/Home.css';
 
 const Home = () => {
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
+
+  const toggleSound = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
   return (
     <div>
       {/* Hero Section */}
       <section className="hero-section pattern-tech-dots">
+        {/* Video Background */}
+        <video 
+          ref={videoRef}
+          className="hero-video-background"
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+        >
+          <source src="/tecnologia.mp4" type="video/mp4" />
+        </video>
+        <div className="hero-video-overlay"></div>
+        
+        {/* Sound Control Button */}
+        <button 
+          className="hero-sound-button"
+          onClick={toggleSound}
+          aria-label={isMuted ? 'Ativar som' : 'Desativar som'}
+        >
+          {isMuted ? (
+            <VolumeX className="sound-icon" />
+          ) : (
+            <Volume2 className="sound-icon" />
+          )}
+        </button>
+        
         <div className="hero-blob-1 animate-float"></div>
         <div className="hero-blob-2 animate-float delay-300"></div>
         

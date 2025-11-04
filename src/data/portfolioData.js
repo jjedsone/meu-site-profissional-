@@ -2,6 +2,56 @@
 // Estrutura de dados para facilitar a inserção de novos projetos
 // Como admin, basta adicionar novos objetos ao array 'portfolioProjects'
 
+// Lista completa de categorias disponíveis
+export const categoriasDisponiveis = [
+  { value: 'saude', label: 'Saúde' },
+  { value: 'medicina', label: 'Medicina' },
+  { value: 'odontologia', label: 'Odontologia' },
+  { value: 'psicologia', label: 'Psicologia' },
+  { value: 'fisioterapia', label: 'Fisioterapia' },
+  { value: 'veterinaria', label: 'Veterinária' },
+  { value: 'nutricao', label: 'Nutrição' },
+  { value: 'estetica', label: 'Estética' },
+  { value: 'juridico', label: 'Jurídico' },
+  { value: 'advocacia', label: 'Advocacia' },
+  { value: 'contabilidade', label: 'Contabilidade' },
+  { value: 'consultoria', label: 'Consultoria' },
+  { value: 'coaching', label: 'Coaching' },
+  { value: 'fitness', label: 'Fitness' },
+  { value: 'educacao', label: 'Educação' },
+  { value: 'arquitetura', label: 'Arquitetura' },
+  { value: 'engenharia', label: 'Engenharia' },
+  { value: 'design', label: 'Design' },
+  { value: 'fotografia', label: 'Fotografia' },
+  { value: 'videografia', label: 'Videografia' },
+  { value: 'marketing', label: 'Marketing' },
+  { value: 'publicidade', label: 'Publicidade' },
+  { value: 'eventos', label: 'Eventos' },
+  { value: 'gastronomia', label: 'Gastronomia' },
+  { value: 'beleza', label: 'Beleza' },
+  { value: 'moda', label: 'Moda' },
+  { value: 'imobiliaria', label: 'Imobiliária' },
+  { value: 'automoveis', label: 'Automóveis' },
+  { value: 'tecnologia', label: 'Tecnologia' },
+  { value: 'financeiro', label: 'Financeiro' },
+  { value: 'seguranca', label: 'Segurança' },
+  { value: 'limpeza', label: 'Limpeza' },
+  { value: 'manutencao', label: 'Manutenção' },
+  { value: 'reformas', label: 'Reformas' },
+  { value: 'jardinagem', label: 'Jardinagem' },
+  { value: 'transporte', label: 'Transporte' },
+  { value: 'turismo', label: 'Turismo' },
+  { value: 'hospedagem', label: 'Hospedagem' },
+  { value: 'restaurante', label: 'Restaurante' },
+  { value: 'outros', label: 'Outros' }
+];
+
+// Função helper para obter label da categoria
+export const getCategoriaLabel = (categoriaValue) => {
+  const categoria = categoriasDisponiveis.find(cat => cat.value === categoriaValue);
+  return categoria ? categoria.label : categoriaValue;
+};
+
 export const portfolioProjects = [
   {
     id: 1,

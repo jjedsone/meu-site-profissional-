@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ExternalLink, CheckCircle, Smartphone, Globe, Eye } from 'lucide-react';
 import PhoneMockup from '../components/PhoneMockup';
-import { getProjectsByCategory } from '../data/portfolioData';
+import { getProjectsByCategory, categoriasDisponiveis } from '../data/portfolioData';
 import '../style/Portfolio.css';
 
 const Portfolio = () => {
@@ -28,18 +28,20 @@ const Portfolio = () => {
 
         {/* Filtros */}
         <div className="portfolio-filters">
-          {['todos', 'saude', 'juridico', 'consultoria', 'contabilidade', 'fitness'].map((cat) => (
+          <button
+            key="todos"
+            onClick={() => setFiltro('todos')}
+            className={`filter-button ${filtro === 'todos' ? 'active' : ''}`}
+          >
+            Todos
+          </button>
+          {categoriasDisponiveis.map((cat) => (
             <button
-              key={cat}
-              onClick={() => setFiltro(cat)}
-              className={`filter-button ${filtro === cat ? 'active' : ''}`}
+              key={cat.value}
+              onClick={() => setFiltro(cat.value)}
+              className={`filter-button ${filtro === cat.value ? 'active' : ''}`}
             >
-              {cat === 'todos' ? 'Todos' : 
-               cat === 'saude' ? 'Saúde' :
-               cat === 'juridico' ? 'Jurídico' :
-               cat === 'consultoria' ? 'Consultoria' :
-               cat === 'contabilidade' ? 'Contabilidade' :
-               'Fitness'}
+              {cat.label}
             </button>
           ))}
         </div>

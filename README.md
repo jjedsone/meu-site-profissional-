@@ -71,7 +71,7 @@ Um site moderno e profissional para venda de serviços de criação de sites par
 
 1. Clone o repositório:
 ```bash
-cd meu-curriculo-main
+cd meu-site-profissional
 ```
 
 2. Instale as dependências:
