@@ -6,6 +6,7 @@ import '../style/Home.css';
 
 const Home = () => {
   const [isMuted, setIsMuted] = useState(true);
+  const [videoError, setVideoError] = useState(false);
   const videoRef = useRef(null);
 
   const toggleSound = () => {
@@ -15,21 +16,32 @@ const Home = () => {
     }
   };
 
+  const handleVideoError = () => {
+    console.warn('Erro ao carregar vídeo, usando fallback');
+    setVideoError(true);
+  };
+
   return (
     <div>
       {/* Hero Section */}
       <section className="hero-section pattern-tech-dots">
         {/* Video Background */}
-        <video 
-          ref={videoRef}
-          className="hero-video-background"
-          autoPlay 
-          loop 
-          muted 
-          playsInline
-        >
-          <source src="/tecnologia.mp4" type="video/mp4" />
-        </video>
+        {!videoError && (
+          <video 
+            ref={videoRef}
+            className="hero-video-background"
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            preload="metadata"
+            onError={handleVideoError}
+            onLoadedData={() => setVideoError(false)}
+          >
+            <source src={`${process.env.PUBLIC_URL || ''}/tecnologia.mp4`} type="video/mp4" />
+            <source src="/tecnologia.mp4" type="video/mp4" />
+          </video>
+        )}
         <div className="hero-video-overlay"></div>
         
         {/* Sound Control Button */}

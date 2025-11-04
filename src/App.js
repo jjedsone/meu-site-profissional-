@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import "./styles/globals.css";
 import Navbar from "./components/Navbar";
 import Chatbot from "./components/Chatbot";
+import SecretAdminLink from "./components/SecretAdminLink";
 import Home from "./page/Home";
 import Planos from "./page/Planos";
 import Portfolio from "./page/Portfolio";
@@ -14,6 +15,7 @@ import Footer from "./page/footer";
 import NotFound from "./page/NotFound";
 // Admin Routes
 import AdminLogin from "./pages/admin/Login";
+import ForgotPassword from "./pages/admin/ForgotPassword";
 import AdminDashboard from "./pages/admin/Dashboard";
 import ProjectForm from "./pages/admin/ProjectForm";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
@@ -68,6 +70,7 @@ function App() {
           
           {/* Admin Routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/forgot-password" element={<ForgotPassword />} />
           <Route 
             path="/admin/dashboard" 
             element={
@@ -103,6 +106,9 @@ function App() {
 
       {/* Footer */}
       {!isAdminRoute && <Footer />}
+
+      {/* Link Secreto para Admin */}
+      {!isAdminRoute && <SecretAdminLink />}
 
       {/* Toast Notifications */}
       <ToastContainer toasts={toasts} removeToast={removeToast} />

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Lock, User, LogIn, AlertCircle } from 'lucide-react';
+import { useNavigate, Link } from 'react-router-dom';
+import { Lock, Mail, LogIn, AlertCircle } from 'lucide-react';
 import { login } from '../../utils/auth';
+import { sendLoginAttemptNotification, getUserInfo, getUserIP } from '../../utils/emailNotification';
 import '../../style/Admin.css';
 
 const AdminLogin = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -17,7 +18,17 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
-      const result = login(username, password);
+      // Enviar notificação de tentativa de login
+      const userInfo = getUserInfo();
+      const userIP = await getUserIP();
+      
+      await sendLoginAttemptNotification(
+        email,
+        userIP,
+        userInfo.userAgent
+      );
+
+      const result = await login(email, password);
       
       if (result.success) {
         navigate('/admin/dashboard');
@@ -55,17 +66,17 @@ const AdminLogin = () => {
 
             <div className="admin-form-group">
               <label className="admin-form-label">
-                <User className="admin-input-icon" />
-                Usuário
+                <Mail className="admin-input-icon" />
+                Email
               </label>
               <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="admin-form-input"
-                placeholder="Digite seu usuário"
+                placeholder="Digite seu email"
                 required
-                autoComplete="username"
+                autoComplete="email"
               />
             </div>
 
@@ -102,9 +113,12 @@ const AdminLogin = () => {
           </form>
 
           <div className="admin-login-footer">
-            <p className="admin-login-hint">
-              💡 Padrão: admin / admin123
-            </p>
+            <Link 
+              to="/admin/forgot-password" 
+              className="admin-forgot-password-link"
+            >
+              Esqueci minha senha
+            </Link>
           </div>
         </div>
       </div>
